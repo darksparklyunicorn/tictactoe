@@ -3,11 +3,9 @@ package tictactoe;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Window {
 	
@@ -24,7 +22,8 @@ public class Window {
 	
 	private JFrame frame;
 	private Canvas canvas;
-	private MyMouseListener mml = new MyMouseListener();
+	private MyMouseListener mml; 
+	private GameLogic gl;
 	
 	
 	private String title;
@@ -34,6 +33,8 @@ public class Window {
 		this.title = title;
 		this.width = width;
 		this.height = height;
+		this.gl = new GameLogic();
+		mml = new MyMouseListener(this.gl, this.width, this.height);
 		
 		createWindow();
 	}
